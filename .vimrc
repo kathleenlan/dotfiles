@@ -23,10 +23,9 @@ Plugin 'raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'shougo/neocomplcache'
+Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-rbenv'
@@ -69,6 +68,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 
 " Syntax Highlighting
 set t_Co=256
@@ -124,6 +124,11 @@ set noswapfile
 set nobackup
 set nowritebackup
 
+" Undo
+"
+set undofile
+set undodir=~/.vim/undo
+
 " Leader
 let mapleader = ','
 map <leader>n :NERDTreeToggle<CR>
@@ -151,6 +156,9 @@ map <leader>t :!rspec %<CR>
 map <leader>rbi :!bundle<CR>
 " VIM Bundle
 map <leader>B :BundleInstall<CR>q
-" VIM wiki
-map <leader>< :foldclose<CR>
-map <leader>> :foldopen<CR>
+
+map <leader>f :FZF<CR>
+
+
+hi StatusLine ctermbg=white ctermfg=blue
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P

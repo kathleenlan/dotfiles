@@ -1,0 +1,31 @@
+[user]
+	name = Kathleen Lan
+	email = tbd
+[core]
+	excludesfile = /Users/kathleenlan/.gitignore_global
+  editor = vim
+  autocrlf = input
+  whitespace = cr-at-eol
+[credential]
+  helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+  co = checkout
+  s = status
+  c = commit
+  a = add
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  b = branch
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+;[merge]
+    ;conflictstyle = diff3
+[commit]
+	template = /Users/kathleenlan/.stCommitMsg
