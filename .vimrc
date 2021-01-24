@@ -15,27 +15,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'danro/rename.vim'
 Plug 'docunext/closetag.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'gmarik/Vundle.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-"Plug 'kana/vim-fakeclip'
+" vim-indent-guides visually displays indent levels
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'raimondi/delimitMate'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-"Plug 'shougo/neocomplete.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
-"Plug 'tpope/vim-rails.git'
-"Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-rails.git'
+Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'vim-scripts/supertab'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go'
 Plug 'dense-analysis/ale'
 
@@ -65,18 +62,18 @@ let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 50
 
 " Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_ruby_checkers = ['rubocop']
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+"let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
 
 " vim-go
 let g:go_highlight_types = 1
@@ -153,13 +150,13 @@ let mapleader = ','
 map <leader>n :NERDTreeToggle<CR>
 map <leader>b :CtrlPBuffer<CR>
 
-" move around with the arrow keys
+" Move around with the arrow keys
 noremap <silent> <Right> <c-w>l
 noremap <silent> <Left> <c-w>h
 noremap <silent> <Up> <c-w>k
 noremap <silent> <Down> <c-w>j
 
-" set visualbell and reset terminal code for visual bell to disable flash and
+" Set visualbell and reset terminal code for visual bell to disable flash and
 " beep when something is wrong. Thanks, Yiwen!
 set visualbell
 set t_vb=
@@ -180,11 +177,16 @@ map <leader>t :!rspec %<CR>
 map <leader>rbi :!bundle<CR>
 " VIM Bundle
 map <leader>B :BundleInstall<CR>q
-
 map <leader>f :FZF<CR>
-
 " vim-go jump to definition
 map <leader>g :GoDef<CR>
 
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
+
+" Autoclose paired characters
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
