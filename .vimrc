@@ -8,38 +8,39 @@ set ruler
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/bin/fzf
 
-call vundle#begin()
-
+" Plugins
+"   Reload .vimrc (:e) and run :PlugInstall to install plugins via vim-plug.
+call plug#begin('~/.vim/plugged')
 " Github Bundles
-Plugin 'danro/rename.vim'
-Plugin 'docunext/closetag.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-"Plugin 'kana/vim-fakeclip'
-Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'raimondi/delimitMate'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'shougo/neocomplete.vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-"Plugin 'tpope/vim-rails.git'
-"Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
-Plugin 'vim-scripts/ShowTrailingWhitespace'
-Plugin 'vim-scripts/supertab'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'fatih/vim-go'
-Plugin 'dense-analysis/ale'
+Plug 'danro/rename.vim'
+Plug 'docunext/closetag.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'gmarik/Vundle.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+"Plug 'kana/vim-fakeclip'
+Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'raimondi/delimitMate'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+"Plug 'shougo/neocomplete.vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+"Plug 'tpope/vim-rails.git'
+"Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'vim-scripts/ShowTrailingWhitespace'
+Plug 'vim-scripts/supertab'
+Plug 'vim-syntastic/syntastic'
+Plug 'fatih/vim-go'
+Plug 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
-call vundle#end()
+call plug#end()
 
 " Turn on omni completion
 filetype plugin on
