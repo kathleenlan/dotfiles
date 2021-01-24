@@ -6,7 +6,8 @@ filetype off
 
 set ruler
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/local/bin/fzf
+
 call vundle#begin()
 
 " Github Bundles
@@ -15,30 +16,39 @@ Plugin 'docunext/closetag.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/fzf'
-Plugin 'kana/vim-fakeclip'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'kana/vim-fakeclip'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'raimondi/delimitMate'
-Plugin 'rking/ag.vim'
+"Plugin 'raimondi/delimitMate'
+Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'shougo/neocomplete.vim'
+"Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-rails.git'
-Plugin 'tpope/vim-rbenv'
+"Plugin 'tpope/vim-rails.git'
+"Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'vim-scripts/supertab'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'fatih/vim-go'
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
+
+" Turn on omni completion
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" Search (using ripgrep)
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
 
 " Indent Guides configuration
 let g:indent_guides_enable_on_vim_startup = 1
@@ -48,11 +58,6 @@ let g:indent_guides_guide_size=1
 " Trailing Whitespace configuration
 let g:DeleteTrailingWhitespace = 1
 let g:DeleteTrailingWhitespace_Action = 'delete'
-
-" CtrlP configuration
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
 
 " Nerdtree configuration
 let NERDTreeShowHidden=1
@@ -65,20 +70,33 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
+
+" vim-go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+
+" ALE
+let g:ale_fix_on_save = 1
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 " Syntax Highlighting
 set t_Co=256
 syntax enable
+
+" Visual guide
+set colorcolumn=80
+
+" colorscheme
 set background=dark
 colorscheme solarized
-filetype plugin indent on
-let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
-
-set colorcolumn=80
 
 " Spacing and Wrapping
 set expandtab
@@ -140,6 +158,11 @@ noremap <silent> <Left> <c-w>h
 noremap <silent> <Up> <c-w>k
 noremap <silent> <Down> <c-w>j
 
+" set visualbell and reset terminal code for visual bell to disable flash and
+" beep when something is wrong. Thanks, Yiwen!
+set visualbell
+set t_vb=
+
 " Command
 map <leader><leader> :
 " Config
@@ -159,6 +182,8 @@ map <leader>B :BundleInstall<CR>q
 
 map <leader>f :FZF<CR>
 
+" vim-go jump to definition
+map <leader>g :GoDef<CR>
 
-hi StatusLine ctermbg=white ctermfg=blue
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
+cnoreabbrev Ack Ack!
+nnoremap <leader>a :Ack!<Space>
