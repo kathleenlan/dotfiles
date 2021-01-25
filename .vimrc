@@ -5,7 +5,6 @@ set nocompatible
 filetype off
 
 set ruler
-set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/bin/fzf
 
 " Plugins
